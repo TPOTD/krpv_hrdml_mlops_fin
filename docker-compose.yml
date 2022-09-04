@@ -6,6 +6,8 @@ services:
       - 5555:5555
     volumes:
       - /opt/models:/models
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   api:
     image: 65.108.82.162:8090/api
@@ -31,7 +33,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
-  index_service_1:
+  cluster_service_1:
     image: 65.108.82.162:8090/cluster
     deploy:
       placement:
@@ -47,7 +49,7 @@ services:
       - "host.docker.internal:host-gateway"
     
 
-  index_service_2:
+  cluster_service_2:
     image: 65.108.82.162:8090/cluster
     deploy:
       placement:
@@ -62,7 +64,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
-  index_service_3:
+  cluster_service_3:
     image: 65.108.82.162:8090/cluster
     deploy:
       placement:

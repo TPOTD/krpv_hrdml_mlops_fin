@@ -3,6 +3,7 @@ import joblib
 import numpy as np
 import json
 import os
+import faiss
 
 CLUSTER = os.environ['CLUSTER']
 faiss_ind = joblib.load(f'/clusters/clust{CLUSTER}/faiss')
