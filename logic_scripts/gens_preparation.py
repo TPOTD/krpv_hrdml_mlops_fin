@@ -3,6 +3,7 @@ import faiss
 import pickle
 import os
 import numpy as np
+import json
 
 gens = [1,2]
 for dg in gens:
