@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify
-import requests
+import joblib
 import numpy as np
 import json
+import os
 
 CLUSTER = os.environ['CLUSTER']
 faiss_ind = joblib.load(f'/clusters/clust{CLUSTER}/faiss')

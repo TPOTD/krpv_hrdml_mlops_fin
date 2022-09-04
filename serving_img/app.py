@@ -1,9 +1,7 @@
 from flask import Flask, request, jsonify
 import numpy as np
-import requests
 from sentence_transformers import SentenceTransformer
 import json
-import os
 
 model = SentenceTransformer('/models/use_model')
 
