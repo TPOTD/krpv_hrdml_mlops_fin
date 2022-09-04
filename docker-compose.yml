@@ -1,0 +1,81 @@
+version: '3.8'
+services:
+  serving:
+    image: 65.108.82.162:8090/serving
+    ports:
+      - 5555:5555
+    volumes:
+      - /opt/models:/models
+
+  api:
+    image: 65.108.82.162:8090/api
+    ports:
+      - 5050:5050
+    volumes:
+      - /opt/clusters/:/clusters
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      
+  cluster_service_0:
+    image: 65.108.82.162:8090/cluster
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==kcloud-production-user-154-vm-574"
+    ports:
+      - 5010:5005
+    volumes:
+      - /opt/clusters/:/clusters
+    environment:
+      - CLUSTER=0
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  index_service_1:
+    image: 65.108.82.162:8090/cluster
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==kcloud-production-user-154-vm-540"
+    ports:
+      - 5011:5005
+    volumes:
+      - /opt/clusters/:/clusters
+    environment:
+      - CLUSTER=1
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    
+
+  index_service_2:
+    image: 65.108.82.162:8090/cluster
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==kcloud-production-user-154-vm-574"
+    ports:
+      - 5012:5005
+    volumes:
+      - /opt/clusters/:/clusters
+    environment:
+      - CLUSTER=2
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  index_service_3:
+    image: 65.108.82.162:8090/cluster
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==kcloud-production-user-154-vm-574"
+    ports:
+      - 5013:5005
+    volumes:
+      - /opt/clusters/:/clusters
+    environment:
+      - CLUSTER=3
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+
+
