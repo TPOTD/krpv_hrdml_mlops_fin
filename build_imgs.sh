@@ -19,4 +19,8 @@ echo "API image"
 ./api_img/build_api.sh
 echo "API done"
 
+echo "Cluster image"
+./cluster_img/build_cluster.sh
+echo "Cluster done"
+
 echo "Success!"
